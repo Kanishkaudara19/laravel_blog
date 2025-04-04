@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
 Auth::routes();
 
@@ -23,3 +22,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Posts
 Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');
+Route::get('/posts/{postId}/show',[PostController::class,'show'])->name('posts.show');
