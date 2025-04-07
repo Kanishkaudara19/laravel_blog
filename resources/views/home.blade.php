@@ -10,7 +10,7 @@
                 <div class="card-body">
 
 
-                    <form method="post" action="{{ route('posts.store') }}">
+                    <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group ">
                             <label>Post Title</label>
@@ -28,6 +28,9 @@
                         {{ session('status') }}
                     </div>
                     @endif
+                        <div class="form-group mt-2">
+                            <input type="file" class="form-control" name="thumbnail">
+                        </div>
                         <button type="submit" class="btn btn-primary mt-2">Post</button>
                     </form>
 
