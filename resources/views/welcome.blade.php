@@ -1,5 +1,9 @@
 @extends('layouts.frontend')
 @section('content')
+@php
+    use Illuminate\Support\Str;
+@endphp
+
 
       <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
@@ -20,7 +24,7 @@
                 <a class="text-dark" href="#">{{ $post->title}}</a>
               </h3>
               <div class="mb-1 text-muted">{{ date('M d',strtotime($post->created_at)) }}</div>
-              <p class="card-text mb-auto">{{ $post->description }}</p>
+              <p class="card-text mb-auto">{{ \Illuminate\Support\Str::limit($post->description, 300, '...') }}</p>
               <a href="{{ route('posts.show',$post->id) }}">Continue reading</a>
             </div>
       
