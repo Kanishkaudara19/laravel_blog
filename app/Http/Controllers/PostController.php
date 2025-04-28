@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Textit;
 
 class PostController extends Controller
 {
@@ -33,6 +34,7 @@ class PostController extends Controller
             'description' => $request->description,
             'thumbnail' => $imageName
          ]);
+         //textit()->sms('0702917210', 'Post Created Successfully!'); // using helper function 
          return redirect(route('posts.all'))->with('status', 'Post Created Successfully');
       }
    }
